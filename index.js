@@ -14,6 +14,7 @@ var connect = mysql.createPool({
 
 app.get('/', (req, res) => {
   res.send('hello world!');
+  console.log('Running');
 });
 
 app.get('/display', (req, res) => {
@@ -61,6 +62,6 @@ app.post('/', (req, res) => {
   });
 });
 
-app.listen(4005, () => {
+app.listen(process.env.PORT, () => {
   console.log('Example app listening to port 4005');
 });
