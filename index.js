@@ -37,30 +37,6 @@ app.get('/display', (req, res) => {
   });
 });
 
-app.post('/', (req, res) => {
-  let micro_code = req.query.code;
-  let micro_name = req.query.name;
-
-  console.log(`code: ${micro_code} \nname: ${micro_name}`);
-
-  connect.getConnection(function (err, connection) {
-    if (err) { res.send('Error Database Connection'); }
-    else {
-      var sql = "INSERT INTO PROGRAM (PROGCODE, PROGNAME) VALUES('"+micro_code+"', '"+micro_name+"')";
-      connect.query(sql, function (err, result) {
-        if (err) {
-          console.log('fail');
-          res.send(result);
-        }
-        else {
-          console.log('success');
-          res.send(result);
-        }
-        connection.release();
-      });
-    }
-  });
-});
 
 app.listen(process.env.PORT, () => {
   console.log('Example app listening to port 4005');
